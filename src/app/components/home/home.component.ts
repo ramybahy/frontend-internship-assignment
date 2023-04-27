@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, filter } from 'rxjs';
+import { debounceTime } from 'rxjs';
+import { SearchService } from '../../core/services/search.service';
+import { searchBook } from 'src/app/core/models/book-response.model';
 
 @Component({
   selector: 'front-end-internship-assignment-home',
@@ -9,8 +11,12 @@ import { debounceTime, filter } from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   bookSearch: FormControl;
-
-  constructor() {
+  isLoading = true;
+  searchValue = '';
+  allBooks: searchBook[] = [];
+  constructor(
+    private searchService: SearchService
+  ) {
     this.bookSearch = new FormControl('');
   }
 
@@ -21,13 +27,20 @@ export class HomeComponent implements OnInit {
     { name: 'Harry Potter' },
     { name: 'Crypto' },
   ];
-
+  getSearchedBooks(value: string) {
+    this.searchService.getSearchedBooks(value).subscribe((data) => {
+      this.allBooks = data?.docs;
+      this.searchValue = value;
+      this.isLoading = false;
+    });
+  }
   ngOnInit(): void {
     this.bookSearch.valueChanges
       .pipe(
         debounceTime(300),
       ).
       subscribe((value: string) => {
+      this.getSearchedBooks(value);
       });
   }
 }

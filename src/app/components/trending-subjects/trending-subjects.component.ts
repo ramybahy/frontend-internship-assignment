@@ -10,9 +10,9 @@ import { Book } from 'src/app/core/models/book-response.model';
 })
 export class TrendingSubjectsComponent implements OnInit {
 
-  isLoading: boolean = true;
+  isLoading = true;
 
-  subjectName: string = '';
+  subjectName = '';
 
   allBooks: Book[] = [];
 
@@ -23,6 +23,8 @@ export class TrendingSubjectsComponent implements OnInit {
 
   getAllBooks() {
     this.subjectsService.getAllBooks(this.subjectName).subscribe((data) => {
+      console.log(data);
+
       this.allBooks = data?.works;
       // this.subjectsArray = data;
       this.isLoading = false;
