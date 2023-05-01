@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input} from '@angular/core';
 import { Book } from 'src/app/core/models/book-response.model';
 import { searchBook } from 'src/app/core/models/book-response.model';
 
@@ -7,7 +7,7 @@ import { searchBook } from 'src/app/core/models/book-response.model';
   templateUrl: './table-view.component.html',
   styleUrls: ['./table-view.component.scss'],
 })
-export class TableViewComponent {
+export class TableViewComponent{
   @Input() booksList: Book[] = [];
   @Input() searchbooksList: searchBook[] = [];
   @Input() subjectName = '';

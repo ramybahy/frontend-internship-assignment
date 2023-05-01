@@ -1,5 +1,5 @@
-<div class="tw-m-24-px">
-  <div class="tw-mb-24-px tw-text-24-px"> Top {{ booksList.length? booksList.length : searchbooksList.length }} book{{ booksList.length > 1 || searchbooksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div>
+<div class="tw-ml-24-px tw-mr-24-px">
+  <div class="tw-mb-24-px tw-text-24-px" *ngIf="tableType === 'subject' "> Top {{ booksList.length? booksList.length : "0" }} book{{ booksList.length > 1 ? "s" : "" }} on {{ subjectName }}</div>
 
   <ng-container>
     <table class="table-view">
@@ -22,7 +22,8 @@
                book.authors.length > 0 ? book.authors[0].name : "Unknown"
              }}
           </td>
-          <td>{{ book.first_publish_year }}</td>
+          <td>{{ book.first_publish_year? book.first_publish_year : "Unknown"}}</td>
+
         </tr>
       </ng-container>
 
@@ -33,10 +34,10 @@
           </td>
           <td> 
              {{
-                   searchBook.author_name.length > 0 ? searchBook.author_name[0] : "Unknown"
+                   searchBook.author_name ? searchBook.author_name[0] : "Unknown"
              }}
           </td>
-          <td>{{ searchBook.first_publish_year }}</td>
+          <td>{{ searchBook.first_publish_year? searchBook.first_publish_year : "Unknown"}}</td>
         </tr>
       </ng-container>
 

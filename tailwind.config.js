@@ -15,7 +15,8 @@ module.exports = {
   content: [join(__dirname, 'src/**/!(*.stories|*.spec).{ts,html}'), ...createGlobPatternsForDependencies(__dirname)],
   theme: {
     textColor: {
-      ...customColors
+      ...customColors,
+      white: "#FFF"
     },
     fontSize: {
       '14-px': '14px',

@@ -10,8 +10,7 @@ export class SearchService {
 
   constructor(private apiService: ApiService) {}
 
-  getSearchedBooks(searchQuery: string): Observable<searchResponse> {
-    const limit = 10;
-    return this.apiService.get(`/search.json?q=${searchQuery.toLowerCase().split(' ').join('+')}&limit=${limit}`);
+  getSearchedBooks(searchQuery: string, offset:number, limit: number): Observable<searchResponse> {
+    return this.apiService.get(`/search.json?q=${searchQuery.toLowerCase().split(' ').join('+')}&limit=${limit}&offset=${offset}`);
   }
 }

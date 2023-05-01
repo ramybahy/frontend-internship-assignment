@@ -11,19 +11,28 @@
     >
   </div>
 </div>
-<div class="tw-flex tw-flex-row tw-m-24-px">
-  <section class="trending-subjects">
-    <div class="tw-font-600 tw-text-24-px">Trending Subjects</div>
+<div class="tw-flex tw-flex-row tw-m-24-px tw-h-full">
+  <section class="trending-subjects ">
+    <div class="tw-font-600 tw-text-24-px tw-text-white">Trending Subjects</div>
     <ul class="tw-list-none tw-pl-0">
-      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
+      <li class="tw-text-16-px tw-cursor-pointer tw-p-12-px tw-text-white" *ngFor="let subject of trendingSubjects" routerLink="/trending-subject/{{ subject.name }}">
         {{ subject.name }}
       </li>
     </ul>
   </section>
-    <front-end-internship-assignment-table-view
+  <div class="tw-m-24-px" *ngIf="allBooks.length === 0 && !isLoading"><p>{{text }}</p></div>
+  <svg class="spinner" viewBox="0 0 50 50" *ngIf="isLoading">
+      <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+  </svg>
+  <div class="tw-flex tw-flex-col tw-flex-1" *ngIf="allBooks.length > 0 && !isLoading">
+    <front-end-internship-assignment-table-view 
     [searchbooksList]="allBooks"
     [subjectName]="searchValue"
     [tableType]="'search'"
     ></front-end-internship-assignment-table-view>
-  
+    <div class="pagination-buttons tw-m-24-px tw-gap-4">
+    <button [disabled]="offset === 0" (click)="previousPage()">previous</button>
+    <button [disabled]="numOfPages === offset/10" (click)="nextPage()">next</button>
+    </div>
+  </div>
 </div>

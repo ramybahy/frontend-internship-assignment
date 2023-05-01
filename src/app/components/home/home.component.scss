@@ -7,7 +7,6 @@
   tw-rounded-4-px
   tw-p-12-px
   tw-m-24-px;
-  background: linear-gradient(146deg, #e1eeff 19.67%, #ffe4fb 127.56%);
 }
 
 .search-button {
@@ -17,15 +16,66 @@
   tw-border-dark-border
   tw-rounded-4-px
   tw-flex
-  tw-justify-center
   tw-h-60-px
-  tw-w-200-px
+  tw-w-200-px;
+  background-color: #f8f9fa;
+  input{
+    width:100%;
+  }
 }
 
+.mat-icon{
+  overflow:visible;
+}
 .trending-subjects {
   @apply
   tw-bg-table-header-bg
   tw-p-12-px
+  tw-pt-24-px
   tw-rounded-4-px
-  tw-shadow-lg
+  tw-shadow-lg;
+  background: linear-gradient(#2e22ac, #d6489e);
+}
+.pagination-buttons {
+  display: flex;
+  justify-content: end;
+}
+
+.spinner {
+  animation: rotate 2s linear infinite;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -25px 0 0 -25px;
+  width: 50px;
+  height: 50px;
+  
+  & .path {
+    stroke: hsl(210, 70, 75);
+    stroke-linecap: round;
+    animation: dash 1.5s ease-in-out infinite;
+  }
+  
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 150;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 90, 150;
+    stroke-dashoffset: -124;
+  }
 }
