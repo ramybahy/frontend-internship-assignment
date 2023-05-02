@@ -35,7 +35,8 @@ You will hear back within 48 hours from us via email.
 ## Development server
 
 Run `nx serve front-end-internship-assignment` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
+## to build and deploy
+run `nx build front-end-internship-assignment --prod --output-path docs --base-href /frontend-internship-assignment/` 
 ## Further help
 
 Visit the [Nx Documentation](https://nx.dev) to learn more.
