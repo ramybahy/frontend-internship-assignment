@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpCacheInterceptorModule } from '@ngneat/cashew';
+import { HttpCacheInterceptorModule, useHttpCacheLocalStorage  } from '@ngneat/cashew';
 import { AppComponent } from './app.component';
 import { TrendingSubjectsComponent } from '../app/components/trending-subjects/trending-subjects.component';
 import { HomeComponent } from '../app/components/home/home.component';
@@ -22,7 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpCacheInterceptorModule.forRoot()
   ],
-  providers: [],
+  providers: [useHttpCacheLocalStorage ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
